@@ -12,7 +12,7 @@ export const PRODUCTS = [
             {
                 id: 0,
                 title: "Sold As-Is, All Sales are Final", 
-                text: "All property is sold AS-IS Where-Is, and ALL SALES ARE FINAL. It is the Bidders responsibility to determine condition, age, genuineness, value or any other determinative factor. Pacific Northwest Auction may attempt to describe the merchandise in advertising and on the Internet, but makes no representations. In no event shall Pacific Northwest Auction be held responsible for having made or implied any warranty of merchantability or fitness for a particular purpose. Bidder shall be the sole judge of value. Some items may be listed as NIB New in Box. Every effort will be made to ensure that each item stays in the same condition that it was photographed in. However, all property is sold AS-IS, and ALL SALES ARE FINAL."
+                text: "Pacific Northwest Auction may attempt to describe the merchandise in advertising and on the Internet, but makes no representations. In no event shall Pacific Northwest Auction be held responsible for having made or implied any warranty of merchantability or fitness for a particular purpose. Bidder shall be the sole judge of value. Some items may be listed as NIB New in Box. Every effort will be made to ensure that each item stays in the same condition that it was photographed in. However, all property is sold AS-IS, and ALL SALES ARE FINAL."
             },
             {
                 id: 1,

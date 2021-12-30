@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
+import { Card, CardImg, CardImgOverlay, CardTitle } from 'reactstrap';
+import ProductInfo from './ProductInfoComponent';
 
 class Auction extends Component {
     constructor(props) {
@@ -13,23 +14,9 @@ class Auction extends Component {
         this.setState({selectedProduct: product});
     }
 
-    renderSelectedProduct(product) {
-        if (product) {
-            return (
-                <Card>
-                    <CardImg top src={product.image} alt={product.name} />
-                    <CardBody>
-                        <CardTitle>{product.name}</CardTitle>
-                        <CardText>{product.description}</CardText>
-                    </CardBody>
-                </Card>
-            );
-        }
-        return <div />;
-    }
-
     render() {
         const auction = this.props.products.map(product => {
+
             return (
                 <div key={product.id} className="col-md-5 m-1">
                    <Card onClick={() => this.onProductSelect(product)}>
@@ -40,17 +27,13 @@ class Auction extends Component {
                     </Card>
                 </div>
             );
-        });
+        })
 
         return (
             <div className="container">
                 <div className='row'>
                     {auction}
-                </div>
-                <div className="row">
-                    <div className="col-md-5 m-1">
-                        {this.renderSelectedProduct(this.state.selectedProduct)}
-                    </div>
+                    <ProductInfo product={this.state.selectedProduct}/>
                 </div>
             </div>
         );
