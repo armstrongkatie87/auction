@@ -1,49 +1,56 @@
 import React, { Component } from 'react';
+import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
 
 class Auction extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            products: [
-                {
-                    id: 0,
-                    name: 'Jackie ',
-                    image: 'assets/images/jChair.jpeg',
-                    description: "MID CENTURY MODERN ARMCHAIR.",
-                    price: ''
-                },
-                {
-                  id: 1,
-                  name: 'Sony Playstation 5 ',
-                  image: 'assets/images/sony-playstation-5.png',
-                  description: "(Sony PS5 Disc) with PULSE 3D Wireless Gaming Headset and Micro SD Card USB Adapter Bundle.",
-                  price: ''
-                },
-                {
-                    id: 2,
-                    name: 'Retro Abstract Painting',
-                    image: 'assets/images/sqPaint.png',
-                    elevation: 2901,
-                    description: "Mid-Century Modern Squares GREEN, Retro Abstract Modernist 50s style Art."
-                }
-            ],
+            selectedProduct: null
         };
     }
 
-    render() {
-        const auction = this.state.products.map(product => {
+    onProductSelect(product) {
+        this.setState({selectedProduct: product});
+    }
+
+    renderSelectedProduct(product) {
+        if (product) {
             return (
-                <div key={product.id} className="col">
-                    <img src={product.image} alt={product.name} />
-                    <h2>{product.name}</h2>
-                    <p>{product.description}</p>
+                <Card>
+                    <CardImg top src={product.image} alt={product.name} />
+                    <CardBody>
+                        <CardTitle>{product.name}</CardTitle>
+                        <CardText>{product.description}</CardText>
+                    </CardBody>
+                </Card>
+            );
+        }
+        return <div />;
+    }
+
+    render() {
+        const auction = this.props.products.map(product => {
+            return (
+                <div key={product.id} className="col-md-5 m-1">
+                   <Card onClick={() => this.onProductSelect(product)}>
+                        <CardImg width="100%" src={product.image} alt={product.name} />
+                        <CardImgOverlay>
+                            <CardTitle>{product.name}</CardTitle>
+                        </CardImgOverlay>
+                    </Card>
                 </div>
             );
         });
+
         return (
             <div className="container">
                 <div className='row'>
                     {auction}
+                </div>
+                <div className="row">
+                    <div className="col-md-5 m-1">
+                        {this.renderSelectedProduct(this.state.selectedProduct)}
+                    </div>
                 </div>
             </div>
         );

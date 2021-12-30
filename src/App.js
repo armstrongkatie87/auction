@@ -2,8 +2,16 @@ import React, { Component } from 'react';
 import { Navbar, NavbarBrand } from 'reactstrap';
 import Auction from './components/AuctionComponent';
 import './App.css';
+import { PRODUCTS } from './shared/products';
 
 class App extends Component {
+  constructor(props) {
+      super(props);
+      this.state = {
+        products: PRODUCTS
+      };
+  }
+
   render() {
       return (
           <div className="App">
@@ -12,7 +20,7 @@ class App extends Component {
                   <NavbarBrand href="/">Pacific Northwest Auction</NavbarBrand>
               </div>
               </Navbar>
-              <Auction />
+              <Auction products={this.state.products} />
           </div>
       );
   }
