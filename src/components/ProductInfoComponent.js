@@ -1,23 +1,9 @@
-import { Component } from "react/cjs/react.production.min";
+import React from 'react';
 import { Card, CardImg, CardText, CardBody, CardTitle} from 'reactstrap';
 
-class ProductInfo extends Component {
-
-    renderTerms(terms) {
-        if(terms) {
-            return(
-                <div className="col-md-5 m-1">
-                    <h4>Terms</h4>
-                    {terms.map(term => <div className="mb-3" key={term.id}> <strong>{term.title}</strong> <br />-- <small>{term.text}</small> <br /></div>)}
-                </div>
-            )
-        }
-        return (<div></div>)
-    }
-
-    renderProduct(product) {
-        return (
-        <div className="col-md-5 m-1">
+function RenderProduct({product}) {
+    return (
+        <div className='col-md-5 m-1'>
             <Card>
                 <CardImg top src={product.image} alt={product.name} />
                 <CardBody>
@@ -26,22 +12,33 @@ class ProductInfo extends Component {
                 </CardBody>
             </Card>
         </div>
+    )
+}
+
+function RenderTerms({terms}) {
+    if(terms) {
+        return(
+            <div className='col-md-5 m-1'>
+                <h4>Auction Terms</h4>
+                {terms.map(term => <div className='mb-3' key={term.id}> <small><strong>{term.title}</strong><br />--{term.text}</small> <br /></div>)}
+            </div>
         )
     }
+    return (<div></div>)
+}
 
-    render() {
-        if(this.props.product) {
+function ProductInfo(props) {
+        if(props.product) {
             return (
                 <div className="container">
                     <div className="row">
-                        {this.renderProduct(this.props.product)}
-                        {this.renderTerms(this.props.product.terms)}
+                        <RenderProduct product={props.product} />
+                        <RenderTerms terms={props.product.terms} />
                     </div>
                 </div>
-                )
+            );
         }
-        return <div></div>
-    } 
+        return <div />
 }
 
 export default ProductInfo; 
