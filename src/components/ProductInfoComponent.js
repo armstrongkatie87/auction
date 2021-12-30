@@ -32,9 +32,11 @@ class ProductInfo extends Component {
     render() {
         if(this.props.product) {
             return (
-                <div className="row">
-                    {this.renderProduct(this.props.product)}
-                    {this.renderTerms(this.props.product.terms)}
+                <div className="container">
+                    <div className="row">
+                        {this.renderProduct(this.props.product)}
+                        {this.renderTerms(this.props.product.terms)}
+                    </div>
                 </div>
                 )
         }
