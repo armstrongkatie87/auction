@@ -1,5 +1,6 @@
 import React from 'react';
-import { Card, CardImg, CardText, CardBody, CardTitle} from 'reactstrap';
+import { Card, CardImg, CardText, CardBody, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 function RenderProduct({product}) {
     return (
@@ -7,7 +8,6 @@ function RenderProduct({product}) {
             <Card>
                 <CardImg top src={product.image} alt={product.name} />
                 <CardBody>
-                    <CardTitle>{product.name}</CardTitle>
                     <CardText>{product.description}</CardText>
                 </CardBody>
             </Card>
@@ -32,13 +32,23 @@ function ProductInfo(props) {
             return (
                 <div className="container">
                     <div className="row">
+                    <div className="col">
+                        <Breadcrumb>
+                            <BreadcrumbItem><Link to="/auction">Auction</Link></BreadcrumbItem>
+                            <BreadcrumbItem active>{props.product.name}</BreadcrumbItem>
+                        </Breadcrumb>
+                        <h2>{props.product.name}</h2>
+                        <hr />
+                    </div>
+                </div>
+                    <div className="row">
                         <RenderProduct product={props.product} />
-                        <RenderTerms terms={props.product.terms} />
+                        <RenderTerms terms={props.terms} />
                     </div>
                 </div>
             );
         }
-        return <div />
+        return <div />;
 }
 
 export default ProductInfo; 
